@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>Bus-o-Matic</title>
+  <script src='javascripts/JSXTransformer.js'></script>
+  <script src='javascripts/react.js'></script>
+
+
+</head>
+<body>
+  <h1>Bus-o-Matic</h1>
+
+  <div id="forms">
+
+  </div>
+
+  <script type='text/jsx'>
+  /** @jsx React.DOM */
+
+  // var FormAssembler = React.createClass({
+  //   render: function(){
+  //     var createItem = function(itemText) {
+  //     return <p>{itemText}</p>;
+  //   };
+  //     return <p>{this.props.items.map(createItem)}</p>;
+  //   }
+  // })
+
+
+  var FormList = React.createClass({
+
+    newForm: <div><label>Form {this.formCount}</label><input id="1"></input></div>,
+
+    getInitialState: function(){
+
+    return {formGroup:
+              <div><label>Form 1</label><input id="1"></input><button onClick={this.handleClick}>add form</button></div>
+            };
+    },
+    handleClick: function(e){
+      e.preventDefault();
+      this.setState({formGroup: <div>{this.state.formGroup}{this.newForm}</div>})
+    },
+    render: function(){
+      return this.state.formGroup
+    }
+  });
+
+  React.renderComponent(<FormList />, document.getElementById('forms') );
+
+  </script>
+
+</body>
+</html>
